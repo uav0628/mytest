@@ -49,7 +49,6 @@ int tcp_server(void){
       if(numrcv ==0 || numrcv ==-1 ){
 	close(dstSocket); break;
       }
-      // fprintf(stdout,">>",buf);
       extern int test2(unsigned char *buff);
       test2(buf);
       // パケットの送信
@@ -77,10 +76,13 @@ int tcp_client(void){
   bzero((char *)&dstAddr, sizeof(dstAddr));
   dstAddr.sin_family = AF_INET;
   dstAddr.sin_port = htons(PORT);
-  
+
+#if 1
+  dstAddr.sin_addr.s_addr = inet_addr(destination);
+#else
   hp = gethostbyname(destination);
   bcopy(hp->h_addr, &dstAddr.sin_addr, hp->h_length);
-
+#endif
   //ソケットの生成
   dstSocket = socket(AF_INET, SOCK_STREAM, 0);
   
