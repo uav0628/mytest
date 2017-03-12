@@ -65,10 +65,11 @@ int tcp_client(void){
   struct sockaddr_in dstAddr;
 
   //struct sockaddr_in addr;
+#if 0
   struct hostent *hp;
-  char   buf[1024];
   int    numrcv;
-
+#endif
+  char   buf[1024];
   // 相手先アドレスの入力と送る文字の入力
   char destination[] = "192.168.1.24";
 

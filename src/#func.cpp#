@@ -27,7 +27,6 @@ int set_isState(void){
   isState[STATE_A] = 1;
   isState[STATE_B] = 1;
   isState[STATE_C] = 1;
-  return 1;
 }
 
 int show_state(unsigned char isSomething,unsigned char state){
@@ -61,7 +60,7 @@ int stateUP(unsigned char *buff)
 
   unsigned char isSomething = 0;
   unsigned char count = 0;
-  int ret = 0;
+  int ret;
 
   while(count < STATE_END) {
     state -= 1;
@@ -78,7 +77,7 @@ int stateUP(unsigned char *buff)
   }
 
   ret = show_state(isSomething,state);
-  return ret;
+  return 1;
 }
 
 int stateDOWN(unsigned char *buff)
@@ -86,7 +85,7 @@ int stateDOWN(unsigned char *buff)
 
   unsigned char isSomething = 0;
   unsigned char count = 0;
-  int ret = 0;
+  int ret;
 
   while(count < STATE_END) {
     state += 1;
@@ -103,7 +102,7 @@ int stateDOWN(unsigned char *buff)
   }
 
   ret = show_state(isSomething,state);
-  return ret;
+  return 1;
 }
 
 
